@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Building Information</h1>
+    <div id="buildingDetails">
+    </div>
+
+    <script src="building_info.js"></script>
+    <script>
+        var buildingName = getQueryParam('building');
+        var buildingDetailsElement = document.getElementById('buildingDetails');
+        if (buildingName) {
+            var buildingDetails = getBuildingDetails(buildingName);
+
+            if (buildingDetails) {
+                var buildingInfo = buildingDetails.info;
+                var buildingInfoElement = document.createElement('p');
+                buildingInfoElement.textContent = buildingInfo;
+                buildingDetailsElement.appendChild(buildingInfoElement);
+            } else {
+                buildingDetailsElement.textContent = 'Building details not found.';
+            }
+        } else {
+            buildingDetailsElement.textContent = 'Building name not provided.';
+        }
+    </script>
+</body>
+</html>
